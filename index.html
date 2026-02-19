@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ライフコーチ MIKIKO YOSHIMURAの公式ウェブサイトは現在準備中です。2026年3月1日開設予定。お問い合わせはお気軽にどうぞ。">
+    <title>MIKIKO YOSHIMURA | LIFE COACH - Coming Soon</title>
+    <style>
+        /* 色変数の定義 */
+        :root {
+            --bg-color-start: #f5f0e6;
+            --bg-color-mid: #f0e8d9;
+            --bg-color-end: #f8f4ec;
+            --text-main: #5d534a;
+            --text-dark: #4a423b;
+            --accent-color: #cba78e;
+            --glass-bg: rgba(255, 255, 250, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        @keyframes breatheBg {
+            0% { background-color: var(--bg-color-start); }
+            50% { background-color: var(--bg-color-mid); }
+            100% { background-color: var(--bg-color-start); }
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+            animation: breatheBg 18s ease-in-out infinite;
+            background-image: 
+                radial-gradient(at 50% 0%, rgba(255,255,255,0.5) 0%, transparent 70%),
+                radial-gradient(at 100% 100%, rgba(255,245,230,0.3) 0%, transparent 60%);
+            background-attachment: fixed;
+        }
+        
+        /* アニメーション：時間を 1.5s に延ばし、より優雅な動きに変更 */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+                filter: blur(5px); /* 出現時に少しぼかすことで柔らかさを演出 */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        .container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px) saturate(120%);
+            -webkit-backdrop-filter: blur(15px) saturate(120%);
+            border: 1px solid var(--glass-border);
+            padding: 70px 50px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(90, 80, 70, 0.1), 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 640px;
+            width: 100%;
+            opacity: 0;
+            /* コンテナ自体の出現も少しゆっくりに */
+            animation: fadeUp 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation-delay: 0.3s;
+        }
+
+        /* 各要素のアニメーション設定 */
+        .fade-item {
+            opacity: 0;
+            /* 1.5秒かけてじわっと出す */
+            animation: fadeUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        
+        /* 出現の間隔を広げて、ゆったりとしたリズムに */
+        .delay-1 { animation-delay: 0.8s; } /* アイコンとタイトル */
+        .delay-2 { animation-delay: 1.4s; } /* メッセージ */
+        .delay-3 { animation-delay: 2.0s; } /* 日付ボックス */
+        .delay-4 { animation-delay: 2.6s; } /* お問い合わせ・フッター */
+
+        .deco-icon-top {
+            width: 40px;
+            height: auto;
+            margin-bottom: 20px;
+            fill: var(--accent-color);
+            opacity: 0.8;
+        }
+        .deco-icon-date {
+            width: 18px;
+            height: auto;
+            margin-right: 8px;
+            fill: var(--accent-color);
+            vertical-align: middle;
+            position: relative;
+            top: -2px;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-weight: 600;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+        .subtitle {
+            font-size: 15px;
+            color: var(--accent-color);
+            margin-bottom: 45px;
+            letter-spacing: 4px;
+            font-weight: 500;
+            display: inline-block;
+            position: relative;
+        }
+        .subtitle::before, .subtitle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 1px;
+            background-color: var(--accent-color);
+            opacity: 0.6;
+        }
+        .subtitle::before { left: -30px; }
+        .subtitle::after { right: -30px; }
+
+        .message {
+            font-size: 16px;
+            line-height: 2.2;
+            margin-bottom: 45px;
+            color: #6e655e;
+        }
+        .message p { margin-bottom: 1.5em; }
+        .message p:last-child { margin-bottom: 0; }
+        br.pc-br { display: block; }
+
+        .date-box {
+            background: rgba(252, 250, 247, 0.6);
+            padding: 25px 30px;
+            border-radius: 12px;
+            display: inline-block;
+            border-left: 4px solid var(--accent-color);
+            margin-bottom: 45px;
+            box-shadow: 0 5px 15px rgba(203, 167, 142, 0.15);
+        }
+        .date-box p.label {
+            font-size: 14px;
+            color: #887d75;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        .date-box p.date {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--text-dark);
+            letter-spacing: 1px;
+        }
+
+        .contact-section {
+            padding-top: 35px;
+            border-top: 1px solid rgba(234, 221, 208, 0.8);
+        }
+        .contact-section p {
+            font-size: 15px;
+            color: #887d75;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+        .email-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent-color), #b5927a);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 16px 35px;
+            border-radius: 50px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(203, 167, 142, 0.4);
+        }
+        .email-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(203, 167, 142, 0.5);
+            filter: brightness(1.05);
+        }
+        .email-icon { margin-right: 10px; font-size: 18px; }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 13px;
+            color: rgba(170, 162, 154, 0.8);
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 50px 25px; }
+            h1 { font-size: 26px; letter-spacing: 3px; }
+            .subtitle::before, .subtitle::after { display: none; }
+            .message { font-size: 15px; text-align: left; line-height: 1.8; }
+            .contact-section p { text-align: left; font-size: 14px; }
+            br.pc-br { display: none; }
+            .date-box { width: 100%; padding: 20px; }
+            .date-box p.date { font-size: 19px; }
+            .email-btn { width: 100%; padding: 15px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <svg class="deco-icon-top fade-item delay-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 2L14.39 9.61L22 12L14.39 14.39L12 22L9.61 14.39L2 12L9.61 9.61L12 2Z" fill="currentColor"/>
+        </svg>
+
+        <h1 class="fade-item delay-1">MIKIKO YOSHIMURA</h1>
+        <div class="subtitle fade-item delay-1">LIFE COACH</div>
+        
+        <div class="message fade-item delay-2">
+            <p>現在、公式ウェブサイトの公開に向けて<br class="pc-br">心を込めて準備を進めております。</p>
+            <p>皆様がより自分らしく、豊かな人生を歩むための<br class="pc-br">サポートをお届けできる場所を創っています。</p>
+            <p>公開まで今しばらくお待ちください。</p>
+        </div>
+
+        <div class="date-box fade-item delay-3">
+            <p class="label">
+                <svg class="deco-icon-date" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z" fill="currentColor"/></svg>
+                Grand Opening
+            </p>
+            <p class="date">2026年3月1日（日）開設予定</p>
+        </div>
+
+        <div class="contact-section fade-item delay-4">
+            <p>開設に関するご質問や、事前のセッションに関するご相談は<br class="pc-br">下記のメールアドレスまでお気軽にお問い合わせください。</p>
+            <a href="mailto:mikiko@moon.email.ne.jp" class="email-btn">
+                <span class="email-icon">✉️</span> mikiko@moon.email.ne.jp
+            </a>
+        </div>
+
+        <div class="footer fade-item delay-4">
+            &copy; 2026 MIKIKO YOSHIMURA. All rights reserved.
+        </div>
+    </div>
+
+</body>
+</html>
