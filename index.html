@@ -3,260 +3,661 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ライフコーチ MIKIKO YOSHIMURAの公式ウェブサイトは現在準備中です。2026年3月1日開設予定。お問い合わせはお気軽にどうぞ。">
-    <title>MIKIKO YOSHIMURA | LIFE COACH - Coming Soon</title>
+    <title>ディス・イズ・ミー合同会社 | Executive Leadership Coaching</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* 色変数の定義 */
         :root {
-            --bg-color-start: #f5f0e6;
-            --bg-color-mid: #f0e8d9;
-            --bg-color-end: #f8f4ec;
-            --text-main: #5d534a;
-            --text-dark: #4a423b;
-            --accent-color: #cba78e;
-            --glass-bg: rgba(255, 255, 250, 0.75);
-            --glass-border: rgba(255, 255, 255, 0.4);
+            /* ほんの少しだけ温かみのある白 */
+            --bg-color: #FAFAF8;
+            /* 真っ黒は避けた柔らかい黒 */
+            --text-color: #222222;
+            /* 知性と洗練を感じさせる墨色（チャコールグレー） */
+            --accent-color: #4A4A4A;
+            --font-serif: 'Shippori Mincho', serif;
+            --font-sans: 'Zen Kaku Gothic New', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        * {
-            box-sizing: border-box;
+        /* サイト全体の基本設定 */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-sans);
+            line-height: 2.2;
+            letter-spacing: 0.08em;
             margin: 0;
             padding: 0;
-        }
-        
-        @keyframes breatheBg {
-            0% { background-color: var(--bg-color-start); }
-            50% { background-color: var(--bg-color-mid); }
-            100% { background-color: var(--bg-color-start); }
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        body {
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            color: var(--text-main);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-            padding: 20px;
-            animation: breatheBg 18s ease-in-out infinite;
-            background-image: 
-                radial-gradient(at 50% 0%, rgba(255,255,255,0.5) 0%, transparent 70%),
-                radial-gradient(at 100% 100%, rgba(255,245,230,0.3) 0%, transparent 60%);
-            background-attachment: fixed;
-        }
-        
-        /* アニメーション：時間を 1.5s に延ばし、より優雅な動きに変更 */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-                filter: blur(5px); /* 出現時に少しぼかすことで柔らかさを演出 */
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-                filter: blur(0);
-            }
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
         }
 
+        a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        /* コンテンツ幅と中央寄せ */
         .container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px) saturate(120%);
-            -webkit-backdrop-filter: blur(15px) saturate(120%);
-            border: 1px solid var(--glass-border);
-            padding: 70px 50px;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(90, 80, 70, 0.1), 0 5px 15px rgba(0,0,0,0.05);
-            max-width: 640px;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        section {
+            padding: 120px 0;
+        }
+
+        /* Sticky Frost Glass Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            opacity: 0;
-            /* コンテナ自体の出現も少しゆっくりに */
-            animation: fadeUp 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-            animation-delay: 0.3s;
+            z-index: 1000;
+            transition: var(--transition);
+            background: transparent;
         }
 
-        /* 各要素のアニメーション設定 */
-        .fade-item {
-            opacity: 0;
-            /* 1.5秒かけてじわっと出す */
-            animation: fadeUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-        
-        /* 出現の間隔を広げて、ゆったりとしたリズムに */
-        .delay-1 { animation-delay: 0.8s; } /* アイコンとタイトル */
-        .delay-2 { animation-delay: 1.4s; } /* メッセージ */
-        .delay-3 { animation-delay: 2.0s; } /* 日付ボックス */
-        .delay-4 { animation-delay: 2.6s; } /* お問い合わせ・フッター */
-
-        .deco-icon-top {
-            width: 40px;
-            height: auto;
-            margin-bottom: 20px;
-            fill: var(--accent-color);
-            opacity: 0.8;
-        }
-        .deco-icon-date {
-            width: 18px;
-            height: auto;
-            margin-right: 8px;
-            fill: var(--accent-color);
-            vertical-align: middle;
-            position: relative;
-            top: -2px;
+        header.scrolled {
+            background: rgba(250, 250, 248, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
         }
 
-        h1 {
-            font-size: 34px;
-            color: var(--text-dark);
-            margin-bottom: 8px;
-            font-weight: 600;
-            letter-spacing: 5px;
-            text-transform: uppercase;
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 24px;
         }
-        .subtitle {
-            font-size: 15px;
-            color: var(--accent-color);
-            margin-bottom: 45px;
-            letter-spacing: 4px;
-            font-weight: 500;
-            display: inline-block;
-            position: relative;
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
         }
-        .subtitle::before, .subtitle::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 20px;
-            height: 1px;
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        /* ナビゲーション */
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* CTAボタン */
+        .btn-cta {
             background-color: var(--accent-color);
-            opacity: 0.6;
-        }
-        .subtitle::before { left: -30px; }
-        .subtitle::after { right: -30px; }
-
-        .message {
-            font-size: 16px;
-            line-height: 2.2;
-            margin-bottom: 45px;
-            color: #6e655e;
-        }
-        .message p { margin-bottom: 1.5em; }
-        .message p:last-child { margin-bottom: 0; }
-        br.pc-br { display: block; }
-
-        .date-box {
-            background: rgba(252, 250, 247, 0.6);
-            padding: 25px 30px;
-            border-radius: 12px;
-            display: inline-block;
-            border-left: 4px solid var(--accent-color);
-            margin-bottom: 45px;
-            box-shadow: 0 5px 15px rgba(203, 167, 142, 0.15);
-        }
-        .date-box p.label {
-            font-size: 14px;
-            color: #887d75;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-        .date-box p.date {
-            font-size: 22px;
-            font-weight: bold;
-            color: var(--text-dark);
-            letter-spacing: 1px;
-        }
-
-        .contact-section {
-            padding-top: 35px;
-            border-top: 1px solid rgba(234, 221, 208, 0.8);
-        }
-        .contact-section p {
-            font-size: 15px;
-            color: #887d75;
-            line-height: 1.7;
-            margin-bottom: 25px;
-        }
-        .email-btn {
+            color: #FAFAF8;
+            padding: 0 32px;
+            min-height: 44px; /* スマホで押しやすいサイズ */
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--accent-color), #b5927a);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 16px 35px;
-            border-radius: 50px;
-            font-size: 16px;
-            letter-spacing: 1px;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            border-radius: 2px;
+            transition: opacity 0.3s;
+        }
+
+        .btn-cta:hover {
+            opacity: 0.8;
+            color: #FAFAF8;
+        }
+
+        /* ハンバーガーメニュー */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 10px;
+            min-height: 44px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 1px;
+            background-color: var(--text-color);
+            margin: 6px 0;
+            transition: var(--transition);
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 80px; /* ヘッダー分 */
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            letter-spacing: 0.15em;
+        }
+
+        .hero p {
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            letter-spacing: 0.2em;
+            opacity: 0.7;
+        }
+
+        /* セクションタイトル */
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 20px;
+            background-color: var(--text-color);
+            opacity: 0.3;
+        }
+
+        /* コンセプト（余白と深さ） */
+        .concept-text p {
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        /* Voice (実績) */
+        .voice-card {
+            margin-bottom: 4rem;
+            padding: 0 20px;
+        }
+
+        .voice-meta {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+
+        .voice-text {
+            font-size: 1.05rem;
+            font-style: italic;
+        }
+
+        /* Service */
+        .service-block {
+            margin-bottom: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(34, 34, 34, 0.1);
+        }
+
+        .service-block h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-list {
+            margin: 3rem 0;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .price-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dotted rgba(34, 34, 34, 0.2);
+        }
+
+        .price-item h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-family: var(--font-sans);
             font-weight: 500;
-            transition: all 0.4s ease;
-            box-shadow: 0 5px 20px rgba(203, 167, 142, 0.4);
-        }
-        .email-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(203, 167, 142, 0.5);
-            filter: brightness(1.05);
-        }
-        .email-icon { margin-right: 10px; font-size: 18px; }
-
-        .footer {
-            margin-top: 50px;
-            font-size: 13px;
-            color: rgba(170, 162, 154, 0.8);
-            letter-spacing: 2px;
         }
 
-        @media (max-width: 480px) {
-            .container { padding: 50px 25px; }
-            h1 { font-size: 26px; letter-spacing: 3px; }
-            .subtitle::before, .subtitle::after { display: none; }
-            .message { font-size: 15px; text-align: left; line-height: 1.8; }
-            .contact-section p { text-align: left; font-size: 14px; }
-            br.pc-br { display: none; }
-            .date-box { width: 100%; padding: 20px; }
-            .date-box p.date { font-size: 19px; }
-            .email-btn { width: 100%; padding: 15px 0; }
+        .price-item p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .price-val {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+        }
+
+        /* Profile */
+        .profile-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+            text-align: left;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: auto;
+            border-radius: 2px;
+            /* ビジネス感の強すぎない、静かな印象の影 */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+        }
+
+        .profile-text h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-title {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+        }
+
+        .profile-bio p {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .profile-list {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .profile-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .profile-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 4px;
+            height: 1px;
+            background-color: var(--text-color);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 150px 0;
+            background-color: #f2f2f0; /* 少しだけ背景色を変えて区切る */
+        }
+
+        .cta-message {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            line-height: 2.5;
+            margin-bottom: 3rem;
+        }
+
+        footer {
+            padding: 40px 0;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            text-align: center;
+        }
+
+        /* スマホ対応 */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--bg-color);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: var(--transition);
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 15px;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            /* ハンバーガーアニメーション */
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            .header-right .btn-cta {
+                display: none; /* スマホヘッダーのボタンは隠し、メニュー内に入れる */
+            }
+
+            .nav-links .btn-cta {
+                display: inline-flex;
+                margin-top: 2rem;
+            }
+
+            /* スマホ時のロゴサイズ調整 */
+            .logo {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <svg class="deco-icon-top fade-item delay-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M12 2L14.39 9.61L22 12L14.39 14.39L12 22L9.61 14.39L2 12L9.61 9.61L12 2Z" fill="currentColor"/>
-        </svg>
+    <header id="header">
+        <div class="header-inner">
+            <a href="#" class="logo">ディス・イズ・ミー合同会社</a>
+            <div class="header-right">
+                <nav class="nav-links" id="nav-links">
+                    <a href="#concept" class="nav-link">Concept</a>
+                    <a href="#voice" class="nav-link">Voice</a>
+                    <a href="#service" class="nav-link">Service</a>
+                    <a href="#profile" class="nav-link">Profile</a>
+                    <a href="#cta" class="btn-cta nav-link" style="display: none;">対話を始める</a>
+                </nav>
+                <a href="#cta" class="btn-cta pc-cta">初回対話</a>
+                
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
 
-        <h1 class="fade-item delay-1">MIKIKO YOSHIMURA</h1>
-        <div class="subtitle fade-item delay-1">LIFE COACH</div>
+    <main>
+        <section class="hero" id="hero">
+            <div class="container" data-aos="fade-up" data-aos-duration="1500">
+                <h1>満ちる力。本質開花。</h1>
+                <p>Executive Leadership Coaching</p>
+            </div>
+        </section>
+
+        <section id="concept">
+            <div class="container concept-text">
+                <p data-aos="fade-up">リーダーであることは、人と向き合うこと。<br>
+                そして、自分自身と向き合うこと。</p>
+                
+                <p data-aos="fade-up" data-aos-delay="100">外に出せない葛藤、言葉にしにくい迷い。<br>
+                それらを静かに抱えながら、意思決定を重ねる。</p>
+                
+                <p data-aos="fade-up" data-aos-delay="100">本当に問われているのは、何を恐れ、何を守ろうとしているのか。<br>
+                何を手放せず、何を選ぶのか。</p>
+                
+                <p data-aos="fade-up" data-aos-delay="100">その問いに触れるとき、力は内側から動き始めます。<br>
+                本質に触れるとは、新しい何かを得ることではなく、<br>すでにあるものに気づくこと。</p>
+                
+                <p data-aos="fade-up" data-aos-delay="100">そのとき、選択は澄み、あり方は整い、影響力は静かに広がります。</p>
+                
+                <p data-aos="fade-up" data-aos-delay="200" style="margin-top: 4rem; font-family: var(--font-serif); font-size: 1.2rem;">私は、その過程に伴走します。</p>
+            </div>
+        </section>
+
+        <section id="voice">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">対話を経て生まれた変化</h2>
+                
+                <div class="voice-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="voice-meta">企業・経営層（60代）</div>
+                    <div class="voice-text">「感情を味わう」と言われ、最初は戸惑いました。やがて、自分の内側の揺らぎに、目を向けるようになりました。判断の手応えが変わりました。</div>
+                </div>
+
+                <div class="voice-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="voice-meta">教育機関・校長職（50代）</div>
+                    <div class="voice-text">一つの問いを、様々な角度から出し尽くすまで対話しました。その中で、自分でも気づかなかった価値観に出会いました。それが、新たな行動へとつながっています。</div>
+                </div>
+
+                <div class="voice-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="voice-meta">企業・部長職（40代）</div>
+                    <div class="voice-text">転職という大きな選択の前に伴走してもらいました。自分の内側から出てきた言葉を、そのまま受け取ってもらえたこと。それが、覚悟につながりました。</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="service">
+            <div class="container">
+                
+                <div class="service-block" data-aos="fade-up">
+                    <h2 class="section-title" style="margin-bottom: 1rem;">For Leaders</h2>
+                    <p style="opacity: 0.7; font-size: 0.9rem; margin-bottom: 2rem;">リーダー個人の方へ</p>
+                    
+                    <p>リーダーとしての現在を整え、揺るがない軸を確立するために。<br>
+                    段階を追って、対話を深めていきます。</p>
+
+                    <div class="price-list">
+                        <div class="price-item">
+                            <h4>1｜初回対話〈Trial〉</h4>
+                            <p>伴走の可能性を確認するための時間です。</p>
+                            <div class="price-val">45分｜5,000円（税込）</div>
+                        </div>
+                        <div class="price-item">
+                            <h4>2｜導入セッション〈Foundation〉</h4>
+                            <p>課題を整理し、本質的なテーマを明確にする90分。</p>
+                            <div class="price-val">90分｜33,000円（税込）</div>
+                        </div>
+                        <div class="price-item">
+                            <h4>3｜継続伴走セッション〈Ongoing〉</h4>
+                            <p>月2回の対話を通じて、変容を定着させます。</p>
+                            <div class="price-val">月額 55,000円（税込）｜月2回（各60分）</div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: left; opacity: 0.8; font-size: 0.95rem; margin-top: 1rem; border: 1px solid rgba(34,34,34,0.1); padding: 2rem;">
+                        <h4 style="font-family: var(--font-serif); margin-bottom: 1rem;">期間について</h4>
+                        <p>対話は、時間とともに深まります。そのため、本コーチングは <strong>3ヶ月以上</strong> を前提としています。</p>
+                        <ul class="profile-list" style="margin-top: 1rem;">
+                            <li><strong>3ヶ月：</strong>現在のテーマを整理し、方向性を明確にするための期間。</li>
+                            <li><strong>6ヶ月（基準期間）：</strong>軸を確立し、選択基準を根本から整える期間。6ヶ月を超えた頃から、対話の深さが変わっていきます。</li>
+                            <li><strong>年間伴走：</strong>課題解決を超え、人生やリーダーシップの転換に向き合う時間軸。対話を重ねたうえで、自然な流れの中でご案内しています。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-block" data-aos="fade-up" style="margin-top: 8rem;">
+                    <h2 class="section-title" style="margin-bottom: 1rem;">For Organizations</h2>
+                    <p style="opacity: 0.7; font-size: 0.9rem; margin-bottom: 2rem;">経営トップの方へ</p>
+                    
+                    <p>組織の未来は、経営者の意思決定の積み重ねによって形づくられます。<br>
+                    正解のない状況の中で、何を守り、何を手放し、どの方向へ舵を切るのか。<br>
+                    その判断の根底にあるのは、戦略以前の「あり方」です。</p>
+
+                    <div style="text-align: left; margin-top: 3rem;">
+                        <h4 style="font-family: var(--font-serif); font-size: 1.1rem;">エグゼクティブへの方への伴走</h4>
+                        <p style="opacity: 0.8; font-size: 0.95rem;">経営者・理事長・CEOのための長期伴走型コーチング。判断の質を高め、組織文化の土台を整えていきます。現場と経営の両方を知る立場から、孤独な意思決定に伴走します。</p>
+                        
+                        <h4 style="font-family: var(--font-serif); font-size: 1.1rem; margin-top: 2rem;">経営中枢メンバーの方々への伴走</h4>
+                        <p style="opacity: 0.8; font-size: 0.95rem;">トップの変容は、必ず組織全体に波及します。必要に応じて、経営中枢メンバーへの伴走も行い、組織の軸を内側から整えていきます。</p>
+
+                        <p style="margin-top: 2rem; padding: 1rem; background: rgba(34,34,34,0.03); font-size: 0.9rem;">
+                            契約期間：6ヶ月〜年間伴走を前提とした設計が中心となります。<br>料金：個別に設計いたします。
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="profile">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">◇ プロフィール</h2>
+                
+                <div class="profile-wrapper" data-aos="fade-up">
+                    <img src="profile.jpg" alt="吉村 美貴子" class="profile-img">
+                    
+                    <div class="profile-text">
+                        <h3>吉村 美貴子</h3>
+                        <div class="profile-title">ディス・イズ・ミー合同会社代表</div>
+                        
+                        <div class="profile-bio">
+                            <p>19歳で、がんを経験。生命の有限性と向き合いながら、人生の問いを抱えてきました。治療を経て社会に戻り、責任ある立場を担い続ける。42歳で再び病と向き合う。長いサバイバーとしての時間が、人の内側にある、言葉になる前の思いに触れる力を育みました。</p>
+                            
+                            <p>東京都にて22年間、管理職として勤務。医療・福祉・教育・国際分野を歴任。<br>
+                            東京オリンピック・パラリンピック競技大会組織委員会総務局次長・人事部長として組織構築を担当。<br>
+                            東京都教育委員会 人事部長（6万4千人の教員人事を統括）。<br>
+                            東京都福祉保健財団 事務局長（医療・保健・福祉施策を統括）。<br>
+                            外交官として香港に駐在。</p>
+                            
+                            <p>現在は、社会を支えるリーダー層の本質的変容を支援しています。</p>
+                        </div>
+
+                        <div style="margin-top: 3rem;">
+                            <h4 style="font-size: 1rem; font-family: var(--font-sans);">対象</h4>
+                            <ul class="profile-list" style="margin-top: 1rem;">
+                                <li>医療・教育など公共分野のリーダー・経営者・役員・事業責任者・高度な意思決定を担う方</li>
+                            </ul>
+
+                            <h4 style="font-size: 1rem; font-family: var(--font-sans); margin-top: 2rem;">＜主な資格＞</h4>
+                            <ul class="profile-list" style="margin-top: 1rem;">
+                                <li>MBA（早稲田大学大学院）</li>
+                                <li>CPCC（米国CTI認定プロフェッショナルコーチ）</li>
+                                <li>NLPマスタープラクティショナー（全米NLP協会認定）</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta" class="cta-section">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title">初回対話のご案内</h2>
+                
+                <p style="margin-bottom: 2rem; opacity: 0.8;">
+                    本コーチングは、深い対話と長期的な伴走を前提としています。<br>
+                    現在は、誠実に向き合える人数に限り、ご案内しています。<br>
+                    初回対話は、オンラインでzoomを使用しておこないます。<br>
+                    対話の前に、いくつかの問いにお答えいただいています。対話を大切にするための準備です。
+                </p>
+
+                <div class="cta-message" style="margin-top: 4rem;">
+                    向き合うと決めたときに。<br>
+                    急ぐ必要はありません。<br>
+                    けれど、もし今、<br>
+                    「向き合う時期だ」と感じているなら。<br>
+                    まずは、対話から。
+                </div>
+                
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfgQ8r4a7cgch-1CKN5FRvdzlxR45U1YDlZbTodEy1jpSRo4A/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-cta" style="padding: 0 48px; font-size: 1rem; min-height: 56px;">▶︎ 対話を申し込む</a>
+                <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.6;">※ Googleフォームへ移動します</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 This is Me LLC. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // AOS Animation Initialization
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 1000,
+            easing: 'ease-out-cubic',
+        });
+
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Hamburger Menu Logic
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = document.querySelectorAll('.nav-link');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // スマホでメニュー項目をタップしたらメニューを閉じる
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
         
-        <div class="message fade-item delay-2">
-            <p>現在、公式ウェブサイトの公開に向けて<br class="pc-br">心を込めて準備を進めております。</p>
-            <p>皆様がより自分らしく、豊かな人生を歩むための<br class="pc-br">サポートをお届けできる場所を創っています。</p>
-            <p>公開まで今しばらくお待ちください。</p>
-        </div>
-
-        <div class="date-box fade-item delay-3">
-            <p class="label">
-                <svg class="deco-icon-date" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z" fill="currentColor"/></svg>
-                Grand Opening
-            </p>
-            <p class="date">2026年3月1日（日）開設予定</p>
-        </div>
-
-        <div class="contact-section fade-item delay-4">
-            <p>開設に関するご質問や、事前のセッションに関するご相談は<br class="pc-br">下記のメールアドレスまでお気軽にお問い合わせください。</p>
-            <a href="mailto:mikiko@moon.email.ne.jp" class="email-btn">
-                <span class="email-icon">✉️</span> mikiko@moon.email.ne.jp
-            </a>
-        </div>
-
-        <div class="footer fade-item delay-4">
-            &copy; 2026 MIKIKO YOSHIMURA. All rights reserved.
-        </div>
-    </div>
-
+        // スマホ・PCのCTAボタン表示切り替え調整
+        window.addEventListener('resize', () => {
+            const btnInMenu = document.querySelector('.nav-links .btn-cta');
+            if (window.innerWidth > 768) {
+                btnInMenu.style.display = 'none';
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            } else {
+                btnInMenu.style.display = 'inline-flex';
+            }
+        });
+        // 初期ロード時の設定
+        if (window.innerWidth <= 768) {
+            document.querySelector('.nav-links .btn-cta').style.display = 'inline-flex';
+        }
+    </script>
 </body>
 </html>
