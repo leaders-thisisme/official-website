@@ -37,6 +37,8 @@
             padding: 0;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            /* スムーズスクロールを有効化 */
+            scroll-behavior: smooth; 
         }
 
         h1, h2, h3, h4 {
@@ -62,6 +64,8 @@
         /* 全体の余白を引き締め (120px -> 90px) */
         section {
             padding: 90px 0;
+            /* アンカーリンクで飛んだ時にヘッダーに隠れないようにする余白 */
+            scroll-margin-top: 100px;
         }
 
         /* Sticky Frost Glass Header */
@@ -286,6 +290,8 @@
             margin-bottom: 5rem;
             padding-top: 2rem;
             border-top: 1px solid rgba(34, 34, 34, 0.1);
+            /* アンカーリンクで飛んだ時にヘッダーに隠れないようにする余白 */
+            scroll-margin-top: 100px;
         }
 
         .price-list {
@@ -543,6 +549,11 @@
                 margin-right: auto;
             }
 
+            /* スマホ表示での特定要素の中央揃え用クラス */
+            .sp-center {
+                text-align: center !important;
+            }
+
             /* リスト親要素をブロックにして左揃えに整える */
             .target-list, .price-list {
                 display: block;
@@ -688,7 +699,7 @@
                 
                 <div class="service-block" id="leaders" data-aos="fade-up">
                     <h2 class="section-title" style="margin-bottom: 1rem;">For Leaders</h2>
-                    <p style="opacity: 0.7; font-size: 1.2rem; margin-bottom: 2rem;">リーダー個人の方へ</p>
+                    <p class="sp-center" style="opacity: 0.7; font-size: 1.2rem; margin-bottom: 2rem;">リーダー個人の方へ</p>
                     
                     <p>リーダーとしての現在を整え、揺るがない軸を確立するために。<br>
                     段階を追って、対話を深めていきます。</p>
@@ -739,7 +750,7 @@
 
                 <div class="service-block" id="organizations" data-aos="fade-up" style="margin-top: 8rem;">
                     <h2 class="section-title" style="margin-bottom: 1rem;">For Organizations</h2>
-                    <p style="opacity: 0.7; font-size: 1.2rem; margin-bottom: 2rem;">経営トップの方へ</p>
+                    <p class="sp-center" style="opacity: 0.7; font-size: 1.2rem; margin-bottom: 2rem;">経営トップの方へ</p>
                     
                     <p>組織の未来は、経営者の意思決定の積み重ねによって形づくられます。<br>
                     正解のない状況の中で、何を守り、何を手放し、どの方向へ舵を切るのか。<br>
@@ -793,8 +804,10 @@
                     まずは、対話から。
                 </div>
                 
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfgQ8r4a7cgch-1CKN5FRvdzlxR45U1YDlZbTodEy1jpSRo4A/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-cta" style="padding: 0 48px; font-size: 1rem; min-height: 56px;">▶︎ 対話を申し込む</a>
-                <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.6;">※ Googleフォームへ移動します</p>
+                <div class="sp-center">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfgQ8r4a7cgch-1CKN5FRvdzlxR45U1YDlZbTodEy1jpSRo4A/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-cta" style="padding: 0 48px; font-size: 1rem; min-height: 56px;">▶︎ 対話を申し込む</a>
+                    <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.6;">※ Googleフォームへ移動します</p>
+                </div>
             </div>
         </section>
     </main>
