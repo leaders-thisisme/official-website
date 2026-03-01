@@ -586,6 +586,22 @@
             .sp-br {
                 display: block;
             }
+            
+            /* PC用の改行を非表示（文の切れ目をごつごつさせないため） */
+            .pc-br {
+                display: none;
+            }
+
+            /* コンセプト部分のフォントサイズと改行を最適化し、品よく見せる */
+            .concept-text p {
+                font-size: 0.95rem; /* 少し小さくして上品に */
+                line-height: 2.2;
+                word-break: auto-phrase; /* 対応ブラウザで文節での自然な折り返しを有効化 */
+            }
+            .concept-text p:last-child {
+                font-size: 1.1rem !important; /* 最後の1行のサイズ調整 */
+                margin-top: 2.5rem !important;
+            }
 
             /* ヒーロー以外のセクションとフッターの文書を左側揃えに */
             main section:not(#hero) .container,
@@ -650,17 +666,13 @@
             <div class="container concept-text">
                 <h2 class="section-title" data-aos="fade-up">問いに立つ</h2>
                 
-                <p data-aos="fade-up">リーダーであることは、人と向き合うこと。<br>
-                そして、自分自身と向き合うこと。</p>
+                <p data-aos="fade-up">リーダーであることは、人と向き合うこと。<br class="pc-br">そして、自分自身と向き合うこと。</p>
                 
-                <p data-aos="fade-up" data-aos-delay="100">外に出せない葛藤、言葉にしにくい迷い。<br>
-                それらを静かに抱えながら、意思決定を重ねる。</p>
+                <p data-aos="fade-up" data-aos-delay="100">外に出せない葛藤、言葉にしにくい迷い。<br class="pc-br">それらを静かに抱えながら、意思決定を重ねる。</p>
                 
-                <p data-aos="fade-up" data-aos-delay="100">本当に問われているのは、何を恐れ、何を守ろうとしているのか。<br>
-                何を手放せず、何を選ぶのか。</p>
+                <p data-aos="fade-up" data-aos-delay="100">本当に問われているのは、何を恐れ、何を守ろうとしているのか。<br class="pc-br">何を手放せず、何を選ぶのか。</p>
                 
-                <p data-aos="fade-up" data-aos-delay="100">その問いに触れるとき、力は内側から動き始めます。<br>
-                本質に触れるとは、新しい何かを得ることではなく、<br>すでにあるものに気づくこと。</p>
+                <p data-aos="fade-up" data-aos-delay="100">その問いに触れるとき、力は内側から動き始めます。<br class="pc-br">本質に触れるとは、新しい何かを得ることではなく、<br class="pc-br">すでにあるものに気づくこと。</p>
                 
                 <p data-aos="fade-up" data-aos-delay="100">そのとき、選択は澄み、あり方は整い、影響力は静かに広がります。</p>
                 
