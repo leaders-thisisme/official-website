@@ -158,6 +158,11 @@
             transition: var(--transition);
         }
 
+        /* スマホ用改行クラス（PCでは非表示） */
+        .sp-br {
+            display: none;
+        }
+
         /* ヒーローセクション */
         .hero {
             /* 100vhから90vhに縮めることで、下のセクションの頭が少し見えて間延び感が減ります */
@@ -574,6 +579,38 @@
             .logo {
                 font-size: 0.9rem;
             }
+
+            /* --- 携帯画面用のレイアウト調整 --- */
+            
+            /* タイトルのスマホ用改行を表示 */
+            .sp-br {
+                display: block;
+            }
+
+            /* ヒーロー以外のセクションとフッターの文書を左側揃えに */
+            main section:not(#hero) .container,
+            footer {
+                text-align: left;
+            }
+
+            /* 見出しのみ中央揃え */
+            .section-title,
+            .sub-section-title {
+                text-align: center !important;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            /* 既存で中央揃え指定されていたテキストを左側揃えに上書き */
+            .duration-intro {
+                text-align: left;
+            }
+
+            /* リスト親要素をブロックにして左揃えに整える */
+            .target-list, .price-list {
+                display: block;
+            }
         }
     </style>
 </head>
@@ -604,7 +641,7 @@
     <main>
         <section class="hero" id="hero">
             <div class="container" data-aos="fade-up" data-aos-duration="1500">
-                <h1>満ちる力。本質開花。</h1>
+                <h1>満ちる力。<br class="sp-br">本質開花。</h1>
                 <p>Executive Leadership Coaching</p>
             </div>
         </section>
