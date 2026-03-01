@@ -289,7 +289,8 @@
         }
 
         .price-list {
-            margin: 3rem 0;
+            /* 下の余白を 3rem から 1rem に縮小し、距離を近づけました */
+            margin: 3rem 0 1rem 0;
             text-align: left;
             display: inline-block;
         }
@@ -319,88 +320,12 @@
             font-size: 1.1rem;
         }
 
-        /* 期間のタイムラインデザイン */
+        /* 期間のセクション */
         .duration-section {
-            margin-top: 1rem;
-            padding-top: 2.5rem;
+            /* 上の余白（marginとpadding）を削り、上のリストに近づけました */
+            margin-top: 0;
+            padding-top: 1.5rem;
             border-top: 1px solid rgba(34,34,34,0.1);
-        }
-        
-        .duration-intro {
-            text-align: center;
-            font-size: 1rem;
-            line-height: 2.2;
-            margin-bottom: 3rem;
-        }
-
-        .duration-intro strong {
-            font-family: var(--font-serif);
-            font-size: 1.15rem;
-            font-weight: 400;
-            margin: 0 0.2rem;
-            border-bottom: 1px solid rgba(34,34,34,0.3);
-            padding-bottom: 2px;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 600px; /* ここを広げて1行に収まりやすくしました */
-            margin: 0 auto;
-            padding-left: 2rem;
-            text-align: left;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 10px;
-            bottom: 10px;
-            width: 1px;
-            background-color: rgba(34, 34, 34, 0.2);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2.5rem;
-        }
-
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2rem;
-            top: 8px;
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background-color: var(--bg-color);
-            border: 1px solid var(--text-color);
-        }
-
-        .timeline-title {
-            font-family: var(--font-serif);
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-        }
-        
-        .timeline-title span {
-            font-family: var(--font-sans);
-            font-size: 0.85rem;
-            opacity: 0.7;
-        }
-
-        .timeline-desc {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin: 0;
-            line-height: 1.8;
         }
 
         /* Profile Section */
@@ -618,11 +543,6 @@
                 margin-right: auto;
             }
 
-            /* 既存で中央揃え指定されていたテキストを左側揃えに上書き */
-            .duration-intro {
-                text-align: left;
-            }
-
             /* リスト親要素をブロックにして左揃えに整える */
             .target-list, .price-list {
                 display: block;
@@ -792,24 +712,26 @@
                     </div>
 
                     <div class="duration-section">
-                        <h4 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 1.5rem; text-align: center;">期間について</h4>
-                        <p class="duration-intro">
-                            対話は、時間とともに深まります。<br>
-                            そのため、本コーチングは<strong>3ヶ月以上</strong>を前提としています。
-                        </p>
-                        
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-title">3ヶ月</div>
-                                <p class="timeline-desc">現在のテーマを整理し、方向性を明確にするための期間。</p>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-title">6ヶ月 <span>（基準期間）</span></div>
-                                <p class="timeline-desc">軸を確立し、選択基準を根本から整える期間。<br>6ヶ月を超えた頃から、対話の深さが変わっていきます。</p>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-title">年間伴走</div>
-                                <p class="timeline-desc">課題解決を超え、人生やリーダーシップの転換に向き合う時間軸。<br>対話を重ねたうえで、自然な流れの中でご案内しています。</p>
+                        <div style="display: inline-block; text-align: left; width: 100%; max-width: 600px;">
+                            <h4 style="font-size: 1.1rem; font-family: var(--font-sans); font-weight: 500; margin-bottom: 1rem;">期間について</h4>
+                            <p style="font-size: 1rem; opacity: 0.8; line-height: 1.8; margin-bottom: 3rem;">
+                                対話は、時間とともに深まります。<br>
+                                そのため、本コーチングは3ヶ月以上を前提としています。
+                            </p>
+                            
+                            <div class="duration-list">
+                                <div class="price-item">
+                                    <h4 style="font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 0.5rem;">3ヶ月</h4>
+                                    <p style="margin: 0;">現在のテーマを整理し、方向性を明確にするための期間。</p>
+                                </div>
+                                <div class="price-item">
+                                    <h4 style="font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 0.5rem;">6ヶ月 <span style="font-family: var(--font-sans); font-size: 0.85rem; opacity: 0.7; font-weight: normal;">（基準期間）</span></h4>
+                                    <p style="margin: 0;">軸を確立し、選択基準を根本から整える期間。<br>6ヶ月を超えた頃から、対話の深さが変わっていきます。</p>
+                                </div>
+                                <div class="price-item" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
+                                    <h4 style="font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 0.5rem;">年間伴走</h4>
+                                    <p style="margin: 0;">課題解決を超え、人生やリーダーシップの転換に向き合う時間軸。<br>対話を重ねたうえで、自然な流れの中でご案内しています。</p>
+                                </div>
                             </div>
                         </div>
                     </div>
