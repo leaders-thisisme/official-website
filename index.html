@@ -540,13 +540,22 @@
                 text-align: left;
             }
 
-            /* 見出しのみ中央揃え */
-            .section-title,
-            .sub-section-title {
+            /* 大見出しのみ中央揃え */
+            .section-title {
                 text-align: center !important;
                 display: block;
                 margin-left: auto;
                 margin-right: auto;
+            }
+
+            /* サブタイトル（このような方へ 等）を中央揃え */
+            .sub-section-title {
+                text-align: center !important;
+            }
+
+            /* お客様の声の肩書・年代を中央揃え */
+            .voice-meta {
+                text-align: center;
             }
 
             /* スマホ表示での特定要素の中央揃え用クラス */
@@ -557,6 +566,19 @@
             /* リスト親要素をブロックにして左揃えに整える */
             .target-list, .price-list {
                 display: block;
+            }
+
+            /* 1行に収めるための強制調整（文字サイズ微小化・改行禁止） */
+            .target-list li {
+                font-size: 1.05rem;
+                letter-spacing: 0.05em;
+                white-space: nowrap;
+            }
+
+            .cta-message {
+                font-size: 1.05rem;
+                letter-spacing: 0.05em;
+                white-space: nowrap;
             }
         }
     </style>
